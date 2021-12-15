@@ -1,12 +1,23 @@
 import React, {useState} from 'react';
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from 'firebase/auth';
 import {useUser} from 'reactfire';
+import '../user/user.css';
 
 function User() {
     const { status, data: user } = useUser();
     const auth = getAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [postName, setPostName] = useState('');
+    const [postContent, setPostContent] = useState('');
+
+    const firestore = useFirestore();
+    const posts = collection(firestore, 'posts');
+    const { status, data: postsData } = useFirestoreCollectionData(posts);
+    
+    if (status === 'loading') {
+      return 'Loading posts...';
+    }
 
     if (status === 'loading') {
         return <span>loading...</span>;
@@ -15,6 +26,8 @@ function User() {
     async function signIn() {
         try {
             createUserWithEmailAndPassword(auth, email, password);
+            setEmail('');
+            setPassword('');
         } catch(error) {
             console.log(error);
         }
@@ -23,6 +36,8 @@ function User() {
     async function logIn() {
         try {
             signInWithEmailAndPassword(auth, email, password);
+            setEmail('');
+            setPassword('');
         } catch(error) {
             console.log(error);
         }
@@ -40,14 +55,22 @@ function User() {
         return (
             <div>
                 <h6>Bienvenido, {user.email}</h6>
-                <br/>
                 <button onClick={logOut}>Log out</button>
+                <div>
+                    <h3>Create post</h3>
+                    <h4>Name</h4>
+                    <input>
+                        type="text"
+                        value={}
+                    </input>
+                </div>
             </div>
         );
     }
 
     return (
-        <div>
+        <div className="loginDiv">
+            <h3>Log in with email</h3>
             <input
                 type='text'
                 value={email}
@@ -62,9 +85,9 @@ function User() {
             />
             <br/>
             <button onClick={logIn}>Log in</button>
+            <br/>
             <button onClick={signIn}>Sign in</button>
         </div>
     );
 }
-
 export default User;
