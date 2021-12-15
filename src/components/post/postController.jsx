@@ -18,6 +18,8 @@ function PostController({username}) {
         
     }
 
+    //NO_ID_FIELD={post.NO_ID_FIELD} content={post.content} createdBy={post.createdBy} likedBy={post.likedBy} name={post.name}
+
     return (
         <div>
             <div className='createPostDiv'>
@@ -38,10 +40,9 @@ function PostController({username}) {
             <br/>
             <div>
                 {
-                    postsData.map((post) => {
-                        console.log(post);
-                        <Post NO_ID_FIELD={post.NO_ID_FIELD} content={post.content} createdBy={post.createdBy} likedBy={post.likedBy} name={post.name}/>
-                    })
+                    postsData.map((post) => (
+                        <Post {...post}/>
+                    ))
                 }
             </div>
         </div>
