@@ -6,6 +6,8 @@ function Post({ NO_ID_FIELD, content, createdBy, likedBy, name}) {
     const id = NO_ID_FIELD;
     const ref = doc(useFirestore(), 'posts', id);
 
+    console.log('post: ' + name);
+
     function deletePost() {
         deleteDoc(ref);
     }

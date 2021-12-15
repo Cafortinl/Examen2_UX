@@ -10,12 +10,6 @@ function App() {
     <div className="mainDiv">
       <Navbar />
       <User />
-      {
-        postsData.map((post) => {
-          console.log(post.name);
-          <h1>{post.name}</h1>
-        })
-      }
     </div>
   );
 }
