@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { collection } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 import { useFirestore, useFirestoreCollectionData } from 'reactfire';
 import Post from './post.jsx';
 
@@ -14,11 +14,9 @@ function PostController({username}) {
       return 'Loading posts...';
     }
 
-    function addPost() {
-        
+    async function addPost() {
+        addDoc(posts, {createdBy: username, name: postName, content: postContent, likedBy: []});
     }
-
-    //NO_ID_FIELD={post.NO_ID_FIELD} content={post.content} createdBy={post.createdBy} likedBy={post.likedBy} name={post.name}
 
     return (
         <div>
@@ -35,7 +33,7 @@ function PostController({username}) {
                     className="contentInput"
                     onChange={(e) => setPostContent(e.target.value)}
                 />
-                <button onClick={addPost()}>Publish</button>
+                <button onClick={addPost}>Publish</button>
             </div>
             <br/>
             <div>

@@ -29,10 +29,11 @@ function Post({ NO_ID_FIELD, content, createdBy, likedBy, name, currentUser}) {
                 <p>{content}</p>
                 <h5>{likedBy.length}</h5>
                 <button onClick={likePost}>Like</button>
+                <button onClick={deletePost}>Delete</button>
             </div>
         );
     }
-    
+
     return (
         <div className="postDiv">
             <h2>{createdBy}</h2>
