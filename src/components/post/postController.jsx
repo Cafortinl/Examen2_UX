@@ -41,7 +41,7 @@ function PostController({username}) {
             <div>
                 {
                     postsData.map((post) => (
-                        <Post {...post}/>
+                        <Post {...post} currentUser={username}/>
                     ))
                 }
             </div>
