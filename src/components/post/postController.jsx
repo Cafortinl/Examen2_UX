@@ -52,12 +52,12 @@ function PostController({username}) {
             <br/>
             <div className="form-outline mb-4">
                 <input type="text" id="form4Example1" className="form-control" value={postName} onChange={(e) => setPostName(e.target.value)}/>
-                <label className="form-label" for="form4Example1">Title</label>
+                <label className="form-label" htmlFor="form4Example1">Title</label>
             </div>
 
             <div className="form-outline mb-4">
                 <textarea className="form-control" id="form4Example3" rows="4" value={postContent} onChange={(e) => setPostContent(e.target.value)}></textarea>
-                <label className="form-label" for="form4Example3">Post</label>
+                <label className="form-label" htmlFor="form4Example3">Post</label>
             </div>
 
             <button type="submit" className="btn btn-primary btn-block mb-4" onClick={addPost}>Publish</button>
