@@ -30,14 +30,14 @@ function PostController({username}) {
             })
     
             return (
-                tempArr.map((post) => (
+                tempArr.slice(0).reverse().map((post) => (
                     <Post {...post} currentUser={username}/>
                 ))
             );
         }
 
         return (
-            postsData.map((post) => (
+            postsData.slice(0).reverse().map((post) => (
                 <Post {...post} currentUser={username}/>
             ))
         );
