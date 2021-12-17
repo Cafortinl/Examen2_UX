@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from 'firebase/auth';
 import {useUser,} from 'reactfire';
 import PostController from '../post/postController';
-import '../user/user.css';
 import '../navbar/navbar.jsx';
 import Navbar from '../navbar/navbar.jsx';
 
