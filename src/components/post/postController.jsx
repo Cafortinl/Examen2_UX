@@ -16,8 +16,11 @@ function PostController({username}) {
       return 'Loading posts...';
     }
 
-    async function addPost() {
+    async function addPost(e) {
+        e.preventDefault();
         addDoc(posts, {createdBy: username, name: postName, content: postContent, likedBy: []});
+        setPostName('');
+        setPostContent('');
     }
 
     function printPosts() {
@@ -58,7 +61,7 @@ function PostController({username}) {
                 <label className="form-label" htmlFor="form4Example3">Post</label>
             </div>
 
-            <button type="submit" className="btn btn-primary btn-block mb-4" onClick={() => {addPost(); setPostName(''); setPostContent('');}}>Publish</button>
+            <button type="submit" className="btn btn-primary btn-block mb-4" onClick={addPost}>Publish</button>
             </form>
             </div>
             <br/>
