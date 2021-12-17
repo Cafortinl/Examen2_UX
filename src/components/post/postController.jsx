@@ -18,6 +18,8 @@ function PostController({username}) {
 
     async function addPost() {
         addDoc(posts, {createdBy: username, name: postName, content: postContent, likedBy: []});
+        setPostName('');
+        setPostContent('');
     }
 
     function printPosts() {
@@ -58,7 +60,7 @@ function PostController({username}) {
                 <label className="form-label" for="form4Example3">Post</label>
             </div>
 
-            <button type="submit" className="btn btn-primary btn-block mb-4">Publish</button>
+            <button type="submit" className="btn btn-primary btn-block mb-4" onClick={addPost}>Publish</button>
             </form>
             </div>
             <br/>
@@ -80,6 +82,7 @@ function PostController({username}) {
 
             </div>
             </div>
+            <br/>
             <div>
                 {
                     printPosts()

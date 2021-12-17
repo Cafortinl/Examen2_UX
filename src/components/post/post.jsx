@@ -23,24 +23,34 @@ function Post({ NO_ID_FIELD, content, createdBy, likedBy, name, currentUser}) {
 
     if (createdBy === currentUser) {
         return (
-            <div className="postDiv">
-                <h2>{createdBy}</h2>
-                <h3>{name}</h3>
-                <p>{content}</p>
-                <h5>{likedBy.length}</h5>
-                <button onClick={likePost}>Like</button>
-                <button onClick={deletePost}>Delete</button>
+            <div className="container py-3 h-100">
+            <div className="card">
+            <h5 className="card-header">Post by {createdBy}</h5>
+            <div className="card-body">
+                <h5 className="card-title">{name}</h5>
+                <p className="card-text">
+                {content}
+                </p>
+                <a href="#" className="btn btn-primary" onClick={likePost}>{likedBy.length} 👍</a>
+                <a href="#" className="btn btn-danger" onClick={deletePost}>Delete post 	🗑️</a>
+            </div>
+            </div>
             </div>
         );
     }
 
     return (
-        <div className="postDiv">
-            <h2>{createdBy}</h2>
-            <h3>{name}</h3>
-            <p>{content}</p>
-            <h5>{likedBy.length}</h5>
-            <button onClick={likePost}>Like</button>
+        <div className="container py-3 h-100">
+        <div className="card">
+        <h5 className="card-header">Post by {createdBy}</h5>
+        <div className="card-body">
+            <h5 className="card-title">{name}</h5>
+            <p className="card-text">
+            {content}
+            </p>
+            <a href="#" className="btn btn-primary" onClick={likePost}>{likedBy.length} 👍</a>
+        </div>
+        </div>
         </div>
     );
     
