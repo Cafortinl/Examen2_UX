@@ -3,6 +3,8 @@ import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sig
 import {useUser,} from 'reactfire';
 import PostController from '../post/postController';
 import '../user/user.css';
+import '../navbar/navbar.jsx';
+import Navbar from '../navbar/navbar.jsx';
 
 function User() {
     const { status, data: user } = useUser();
@@ -34,32 +36,28 @@ function User() {
         }
     }
 
-    function logOut() {
-        try {
-            signOut(auth);
-        } catch(error) {
-            console.log(error);
-        }
-    }
+    
 
     if (user) {
         return (
             <div>
-                <h6>Bienvenido, {user.email}</h6>
-                <button onClick={logOut}>Log out</button>
+                <Navbar auth={auth}/>
+                <br/>
                 <PostController username={user.email} />
             </div>
         );
     }
 
     return (
+        <div>
+        <Navbar/>
         <div className="container py-5 h-100">
             <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-12 col-md-8 col-lg-6 col-xl-5">
                 <div className="card shadow-2-strong">
                 <div className="card-body p-5 text-center">
 
-                    <h3 className="mb-5">Sign in</h3>
+                    <h3 className="mb-5">Log in with email</h3>
 
                     <div className="form-outline mb-4">
                     <input type="email" id="typeEmailX-2" className="form-control form-control-lg" value={email} onChange={(e) => setEmail(e.target.value)}/>
@@ -81,6 +79,7 @@ function User() {
                 </div>
             </div>
             </div>
+        </div>
         </div>
     );
 }
