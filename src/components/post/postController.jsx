@@ -36,6 +36,7 @@ function PostController({username}) {
                 <button onClick={addPost}>Publish</button>
             </div>
             <br/>
+            
             <div>
                 {
                     postsData.map((post) => (

@@ -3,7 +3,7 @@ import '../navbar/style.css'
 
 function Navbar() {
     return (
-        <div id='navbarDiv'>
+        <div className='navbarDiv'>
             <h1>Fire news 🔥</h1>
         </div>
     );
